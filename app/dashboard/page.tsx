@@ -1,11 +1,11 @@
-import { AppSidebar } from "@/components/app-sidebar"
+'use client'
+
+//import { AppSidebar } from "@/components/app-sidebar"
 import {
   Breadcrumb,
   BreadcrumbItem,
-  BreadcrumbLink,
   BreadcrumbList,
   BreadcrumbPage,
-  BreadcrumbSeparator,
 } from "@/components/ui/breadcrumb"
 import { Separator } from "@/components/ui/separator"
 import {
@@ -13,13 +13,15 @@ import {
   SidebarProvider,
   SidebarTrigger,
 } from "@/components/ui/sidebar"
-import PortfolioList from "@/app/upload/portfolio items/PortfolioList"
+import PortfolioList from '@/components/portfolio/PortfolioList'
 import { Card } from "@/components/ui/card"
+import { useRouter } from "next/navigation"
 
 export default function Page() {
+  const router = useRouter();
   return (
     <SidebarProvider>
-      <AppSidebar/>
+      {/* <AppSidebar/> */}
       <SidebarInset>
         <header className="flex h-16 shrink-0 items-center gap-2 transition-[width,height] ease-linear group-has-[[data-collapsible=icon]]/sidebar-wrapper:h-12">
           <div className="flex items-center gap-2 px-4">
@@ -40,7 +42,8 @@ export default function Page() {
          <p className="mt-1 text-muted-foreground">Manage your portfolio content from here</p>
         </div>
         <button 
-          className="mt-4 md:mt-0 inline-flex items-center justify-center rounded-md bg-gradient-to-r from-[#F57C1F] to-[#0F9B99] px-5 py-2.5 text-sm font-medium text-white shadow-sm hover:opacity-90 focus:outline-none focus:ring-2 focus:ring-accent focus:ring-offset-2"
+          onClick={()=>router.push('/blogs/create')}
+          className="mt-4 md:mt-0 inline-flex items-center justify-center rounded-md bg-gradient-to-r from-[#F57C1F] to-[#0F9B99] px-5 py-2.5 text-sm font-medium text-white shadow-sm hover:opacity-90 focus:outline-none focus:ring-2 focus:ring-accent focus:ring-offset-2 cursor-pointer"
           >
           + Add New Item
          </button>

@@ -1,8 +1,10 @@
-
+'use client';
 import React from 'react';
-import PortfolioList from '@/app/upload/portfolio items/PortfolioList';
+import { useRouter } from 'next/navigation';
+import PortfolioList from '@/components/portfolio/PortfolioList'
 
 const PortfolioPage = () => {
+  const router = useRouter();
   return (
       <div className="max-w-7xl mx-auto">
         <div className="flex flex-col md:flex-row md:items-center md:justify-between mb-8">
@@ -11,7 +13,8 @@ const PortfolioPage = () => {
             <p className="mt-1 text-muted-foreground">Manage all your portfolio items</p>
           </div>
           <button 
-            className="mt-4 md:mt-0 inline-flex items-center justify-center rounded-md bg-gradient-to-r from-[#F57C1F] to-[#0F9B99] px-5 py-2.5 text-sm font-medium text-white shadow-sm hover:opacity-90 focus:outline-none focus:ring-2 focus:ring-accent focus:ring-offset-2"
+            onClick={() => router.push('/blogs/create')}
+            className="mt-4 md:mt-0 inline-flex items-center justify-center rounded-md bg-gradient-to-r from-[#F57C1F] to-[#0F9B99] px-5 py-2.5 text-sm font-medium text-white shadow-sm hover:opacity-90 focus:outline-none focus:ring-2 focus:ring-accent focus:ring-offset-2 cursor-pointer"
           >
             + Add New Item
           </button>
