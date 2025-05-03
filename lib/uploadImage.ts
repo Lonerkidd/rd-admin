@@ -51,11 +51,11 @@ export const validateImage = (file: File): { valid: boolean; error?: string } =>
   }
 
   // Check file size (limit to 5MB)
-  const maxSize = 5 * 1024 * 1024; // 5MB
+  const maxSize = 1 * 1024 * 1024; // 5MB
   if (file.size > maxSize) {
     return { 
       valid: false, 
-      error: 'File size too large. Please upload an image smaller than 5MB.' 
+      error: 'File size too large. Please upload an image smaller than 1MB.' 
     };
   }
 

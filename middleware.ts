@@ -9,12 +9,13 @@ const protectedPaths = [
   '/api/updatePost',
   '/api/deletePost',
   '/dashboard',
+  '/',
+  '/blogs*',	
   '/upload',
 ];
 
 // Paths that are public (don't require authentication)
 const publicPaths = [
-  '/',
   '/api/auth',
 ];
 

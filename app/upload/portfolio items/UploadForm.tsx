@@ -3,7 +3,7 @@ import React, { useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { useToast } from '@/components/hooks/use-toast';
-import { PortfolioItem, addPost, uploadImage } from '@/components/lib/api';
+import { PortfolioItem, addPost, uploadImage } from '@/lib/api';
 import { formSchema, FormValues } from './types';
 import ImageUploadSection from './ImageUploadSection';
 import FormFields from './FormFields';

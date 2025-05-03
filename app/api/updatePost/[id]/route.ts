@@ -43,6 +43,8 @@ export async function PUT(req: Request) {
         // Validate input data
         const validationResult = updateBlogSchema.safeParse(body);
         if (!validationResult.success) {
+          console.error("Validation error:", validationResult.error.format());
+          // Return validation error response
           return NextResponse.json(
             { error: 'Validation error', details: validationResult.error.format() },
             { status: 400 }
@@ -60,13 +62,13 @@ export async function PUT(req: Request) {
             );
         }
         
-        // Optional: Check if user is the author or has admin privileges
-        if (existingBlog.author.toString() !== session.user.id && session.user.role !== 'admin') {
-            return NextResponse.json(
-                { message: "Not authorized to update this post" },
-                { status: 403 }
-            );
-        }
+        // // Optional: Check if user is the author or has admin privileges
+        // if (existingBlog.author.toString() !== session.user.id && session.user.role !== 'admin') {
+        //     return NextResponse.json(
+        //         { message: "Not authorized to update this post" },
+        //         { status: 403 }
+        //     );
+        // }
 
         // Update the blog post in the database
         const updatedPost = await Blog.findByIdAndUpdate(

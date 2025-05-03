@@ -4,6 +4,7 @@ import { BlogFormValues } from '@/types';
 import { useSession } from 'next-auth/react'; // Assuming you're using NextAuth for user sessions
 
 const defaultFormValues: BlogFormValues = {  
+  _id: '',
   title: '',
   content: '',
   slug: '',
@@ -95,7 +96,7 @@ export default function useBlogForm(
       }
 
       // Submit to API
-      const endpoint = mode === 'create' ? '/api/addPost' : `/api/updatePost/${initialValues.id}`;
+      const endpoint = mode === 'create' ? '/api/addPost' : `/api/updatePost/${initialValues._id}`;
       const response = await fetch(endpoint, {
         method: mode === 'create' ? 'POST' : 'PUT',
         body: formData,

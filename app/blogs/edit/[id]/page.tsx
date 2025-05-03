@@ -33,6 +33,8 @@ async function getBlogPost(id: string) {
       content: blog.content,
       image: blog.image,
       slug: blog.slug,
+      client: blog.client || '',
+      video: blog.video || '',
       excerpt: blog.excerpt || '',
       tags: blog.tags || [],
     };
@@ -42,13 +44,17 @@ async function getBlogPost(id: string) {
   }
 }
 
-interface EditBlogPageProps {
-  params: {
-    id: string;
-  };
-}
 
-export default async function EditBlogPage({ params }: EditBlogPageProps) {
+export default async function EditBlogPage({ 
+  params 
+}: { 
+  params: { id: string } 
+}) {
+  // Validate that id exists and is a string
+  if (!params?.id || typeof params.id !== 'string') {
+    notFound();
+  }
+  
   const blog = await getBlogPost(params.id);
   
   // If blog post not found, show 404
@@ -59,7 +65,7 @@ export default async function EditBlogPage({ params }: EditBlogPageProps) {
   return (
     <div className="container mx-auto py-8">
       <h1 className="text-3xl font-bold mb-8">Edit Blog Post</h1>
-      <BlogForm mode="edit" defaultValues={blog} />
+      <BlogForm mode="edit" defaultValues={{ ...blog, tags: blog.tags.join(', ') }} />
     </div>
   );
 }

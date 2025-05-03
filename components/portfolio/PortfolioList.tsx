@@ -1,6 +1,6 @@
 "use client";
 import React, { useState, useEffect } from 'react';
-import { getPosts } from '@/components/lib/api';
+import { getPosts } from '@/lib/api';
 import { useToast } from '@/components/hooks/use-toast';
 import { PortfolioItem } from '@/types';
 import PortfolioCard from '@/components/portfolio/PortfolioCard';

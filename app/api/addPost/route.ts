@@ -2,7 +2,7 @@ import {connectToDatabase} from "@/database";
 import Blog from '@/database/models/blogs';
 import { authOptions } from "@/lib/auth";
 import { getServerSession } from "next-auth/next";
-import mongoose from "mongoose";
+
 
 export async function POST(req: Request) {
     try {
@@ -43,7 +43,7 @@ export async function POST(req: Request) {
             data = await req.json();
         }
         
-        const { title, content, image, video, slug, excerpt, tags } = data;
+        const { title, content, image, video, slug, excerpt,client, tags } = data;
 
         // Create a valid ObjectId from the session user id
         //const authorId = new mongoose.Types.ObjectId(session.user.id);
@@ -55,6 +55,7 @@ export async function POST(req: Request) {
             video,
             slug,
             excerpt,
+            client,
             tags,
             //author: authorId,
         });

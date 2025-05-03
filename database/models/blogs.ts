@@ -7,6 +7,7 @@ interface IBlog {
   image: string;
   slug: string;
   excerpt: string;
+  client?: string;
   // author: mongoose.Types.ObjectId | string; // Add proper typing for author
   video?: string;
   tags?: string[];
@@ -36,6 +37,10 @@ const blogSchema = new Schema<IBlog>({
         unique: false,
     },
     excerpt: {
+        type: String,
+        required: false,
+    },
+    client: {
         type: String,
         required: false,
     },
